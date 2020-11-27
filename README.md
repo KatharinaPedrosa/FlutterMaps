@@ -1,4 +1,5 @@
 Trabalho realizado para a disciplina Sistemas Distribuídos e Mobile
+
 "O aplicativo Helping Hand tem o objetivo de fazer com que o consumidor localize facilmente e compre dos pequenos estabelecimentos do seu bairro."
 
 Equipe formada por:
