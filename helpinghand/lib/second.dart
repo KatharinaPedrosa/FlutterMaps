@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    return new SecondPageState();
+  }
+
+}
+
+class SecondPageState extends State<SecondPage>{
   GoogleMapController mapController;
 
   LatLng _center = const LatLng(45.521563, -122.677433);
@@ -18,7 +27,7 @@ class SecondPage extends StatelessWidget {
   void addMarker() {
     final MarkerId markerId = MarkerId("your"); //id para o marker
 
-    // creating a new MARKER
+    // criar o MARKER
     final Marker marker = Marker(
       markerId: markerId,
       position: LatLng(
@@ -28,7 +37,10 @@ class SecondPage extends StatelessWidget {
       infoWindow: InfoWindow(title: "Estou aqui"),
     );
 
-    markers[markerId] = marker;
+    setState(() {
+      // adicionar um novo marcador no mapa
+      markers[markerId] = marker;
+    });
   }
 
   Future getLocalization() async {
@@ -53,19 +65,19 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text("Negócios na região"),
-          backgroundColor: Color.fromRGBO(21,182,214,1),
+          backgroundColor: Color.fromRGBO(21, 182, 214, 1),
         ),
-        body: GoogleMap(
-              onMapCreated: _onMapCreated, //evento de criação do mapa
-              initialCameraPosition: CameraPosition(
-                //posicao do mapa
-                target: _center, //posicao da camera - latitute e longitude
-                zoom: 11.0,
-              ),
-              markers: Set<Marker>.of(
-                  markers.values), //o vermelho que marca a posicao
-            )
-        
-      );
+        body: GoogleMap(//widget do GoogleMaps
+          onMapCreated: _onMapCreated, //evento de criação do mapa
+          initialCameraPosition: CameraPosition(
+            //posicao do mapa
+            target: _center, //posicao da camera - latitute e longitude
+            zoom: 11.0,
+          ),
+          markers:
+              Set<Marker>.of(markers.values), //o vermelho que marca a posicao
+        ));
   }
-}
+  }
+
+

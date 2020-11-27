@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'first.dart';
 
 void main() => runApp(MyApp());
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'helping hand project',
       theme: ThemeData(
-        fontFamily: 'Times',
+        fontFamily: 'Nunito',
         primarySwatch: Colors.blue,
       ),
       home: FirstPage(),
